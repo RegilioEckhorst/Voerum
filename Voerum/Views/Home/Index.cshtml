@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@* <div class="jumbotron"> *@
+@*     <h1>ASP.NET</h1> *@
+@*     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p> *@
+@*     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p> *@
+@* </div> *@
+
+<br/><br/>
+     <div class="row">
+         <div class="col-md-3">
+             <h2 style="color: darkblue">Cheat day!</h2>
+             <p style="color: aliceblue">
+                 Iedereen kent dat wel, je heb een lange periode in de week gezond gegeten, gesport, de calorietjes geteld
+                 en noem maar op! Jij snakt naar iets ongezonds om te eten maar wilt daarbij niet je gains verliezen.. Vrees
+                 niet! De CheatDay website is DE website die ervoor zorgt dat jij je dieet langer volhoudt! Aan de hand van
+                 de inhoud van jouw koelkast, kunnen wij "gezonde" cheatday recepten aanbieden. Je kunt ook zelf recepten maken en delen met anderen!
+             </p>
+             @if (!Request.IsAuthenticated)
+             {
+                 @Html.ActionLink("Registreren", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-primary" })
+                 @Html.Raw("&nbsp");
+                 @Html.ActionLink("Inloggen", "Login", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-primary" })
+             }
+         </div>
+         &nbsp;
+         <br />
+         <div class="col-md-4">
+         </div>
+         <div class="col-md-4">
+             <img src="/Content/cd.png" alt="Sample Photo" width="75%" height="75%" />
+         </div>
+     </div>

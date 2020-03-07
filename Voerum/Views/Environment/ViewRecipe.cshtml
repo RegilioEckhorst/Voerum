@@ -1,0 +1,33 @@
+﻿@model Voerum.ViewModel.NewViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<br/>
+    <h1 style="color: darkblue">@Model.Recipes[0].Name</h1>
+<br/>
+
+<div class="row">
+    <div class="col-md-3">
+        <h3 style="color: aliceblue">Ingredienten</h3>
+        @foreach (var ingredients in Model.Ingredients)
+        {
+            <p style="color: aliceblue">@ingredients.Name</p> 
+        }
+    </div>
+
+    <div class="col-md-4">
+        <h3 style="color: aliceblue">Beschrijving</h3>
+        <p style="color: aliceblue">@Model.Recipes[0].Beschrijving</p>
+    </div>
+
+    <div class="col-md-4">
+        <img src="/Content/cd.png" alt="Sample Photo" width="75%" height="75%" />
+    </div>
+</div>
+
+@Html.ActionLink("Wijzigen", "Edit", "Environment", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-primary" })
+
+@Html.ActionLink("Verwijderen", "Delete", "Environment", new { id = Request.Url.Segments.Last()}, new { onclick = "return confirm('Weet je zeker dat je dit recept wilt verwijderen?');" , @class = "btn btn-primary" })
+@* @Html.ActionLink("Delete", "Edit", "Environment", new { id = Request.Params["id"]}, new { onclick = "return confirm('Are you sure you wish to delete this article?');" }) *@

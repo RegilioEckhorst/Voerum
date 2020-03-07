@@ -1,0 +1,45 @@
+﻿@using System.Activities
+@using Newtonsoft.Json
+@model Voerum.ViewModel.NewViewModel
+@{
+    ViewBag.Title = "Save";
+}
+
+@* @using (Html.BeginForm("CreateRecipe", "Environment", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) *@
+@using (Html.BeginForm("CreateRecipe", "Environment"))
+{
+    <br/>
+    <div class="form-group">
+        <b style="color: aliceblue">Naam van recept</b><br/>
+        @Html.TextBoxFor(m=> m.Recipes[0].Name, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Recipes[0].Name)
+    </div>
+
+    for (int i = 0; i < 30; i++)
+    {
+        <div style="display: inline-block;" class="form-group">
+            @Html.DropDownListFor(m => m.Ingredients[i].Name, new SelectList(Model.Ingredients, "Name", "Name"), "Kies je ingredient", new {@class = "form-group"})
+
+        </div>
+
+        if (i%3==2)
+        {
+            <br/>
+        }
+    }
+
+    <b style="color: aliceblue">@Html.LabelFor(m => m.Recipes[0].Beschrijving)</b>
+    <br/>
+    @Html.TextAreaFor(m=> m.Recipes[0].Beschrijving, 10,30, htmlAttributes: new {style="width: 75%; max-width: 100%;" })
+    
+    <br/>
+
+    <div class="checkbox">
+        <label style="color: aliceblue">
+            @Html.CheckBoxFor(m => m.Recipes[0].IsPublic) <b>Openbaar</b>
+        </label>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Opslaan" />
+    <br/>
+}

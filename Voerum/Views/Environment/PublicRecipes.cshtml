@@ -1,0 +1,12 @@
+﻿@model Voerum.ViewModel.NewViewModel
+@{
+    ViewBag.Title = "PublicRecipes";
+}
+
+<h1 style="color: aliceblue">Alle recepten</h1>
+
+@foreach (var recipes in Model.Recipes)
+{
+    @Html.ActionLink(recipes.Name, "ViewRecipe", "Environment", new { id = recipes.Id }, null)
+    <br/>
+}

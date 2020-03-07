@@ -1,0 +1,25 @@
+﻿@model Voerum.ViewModel.NewViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h1 style="color: darkblue">Mijn recepten: </h1> <br />
+
+@if (Model.Recipes.Count ==0)
+{
+    <p style="color: aliceblue">Je hebt nog geen recepten!<b>@Html.ActionLink(" Maak snel een recept aan!", "NewRecipe", "Environment", new { area = "" }, null)</b> <br />
+    </p>
+}
+@foreach (var nm in Model.Recipes)
+{
+    @Html.ActionLink(nm.Name, "ViewRecipe", "Environment", new { id = nm.Id }, null)
+    <br />
+}
+
+<br />
+
+
+<b>@Html.ActionLink("Maak een recept", "NewRecipe", "Environment", new { area = "" }, null)</b> <br />
+<b>@Html.ActionLink("Andere recepten bekijken", "PublicRecipes", "Environment", new { area = "" }, null)</b>
+
